@@ -62,7 +62,7 @@ def init_db():
 
 def get_db_connection():
     return mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST", "localhost"),
+        host=os.getenv("MYSQL_HOST", "mysql.surveyjs.svc.cluster.local"),
         user=os.getenv("MYSQL_USER", "root"),
         password=os.getenv("MYSQL_PASSWORD", "password"),
         database=os.getenv("MYSQL_DATABASE", "surveydb")
