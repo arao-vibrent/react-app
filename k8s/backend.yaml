@@ -13,6 +13,8 @@ spec:
       labels:
         app: backend
     spec:
+      imagePullSecrets:
+        - name: artifacts-ssk8s-vibrenthealth-com-vibrent-base-read-only
       containers:
       - name: backend
         image: artifacts.ssk8s.vibrenthealth.com/vibrent-base/surveyjs-backend:2
