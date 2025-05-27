@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
     default-libmysqlclient-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Create db directory
+RUN mkdir -p /app/db
+
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
@@ -18,6 +21,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files
 COPY . .
+
+# Copy SQL file from parent directory
+COPY ../db/responses.sql /app/db/responses.sql
 
 # Expose port
 EXPOSE 8000

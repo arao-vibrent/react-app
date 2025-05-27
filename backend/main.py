@@ -34,8 +34,22 @@ def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Read the SQL file
-    sql_file_path = os.path.join(os.path.dirname(__file__), '..', 'db', 'responses.sql')
+    # Try multiple possible locations for the SQL file
+    possible_paths = [
+        os.path.join(os.path.dirname(__file__), 'db', 'responses.sql'),  # Local backend/db
+        os.path.join(os.path.dirname(__file__), '..', 'db', 'responses.sql'),  # Parent db directory
+        '/app/db/responses.sql'  # Container path
+    ]
+    
+    sql_file_path = None
+    for path in possible_paths:
+        if os.path.exists(path):
+            sql_file_path = path
+            break
+    
+    if not sql_file_path:
+        raise FileNotFoundError("Could not find responses.sql in any of the expected locations")
+    
     with open(sql_file_path, 'r') as sql_file:
         sql_commands = sql_file.read()
     
@@ -62,7 +76,7 @@ def init_db():
 
 def get_db_connection():
     return mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST", "mysql"),
+        host=os.getenv("MYSQL_HOST", "mysql.surveyjs.svc.cluster.local"),
         user=os.getenv("MYSQL_USER", "root"),
         password=os.getenv("MYSQL_PASSWORD", "password"),
         database=os.getenv("MYSQL_DATABASE", "surveydb")
