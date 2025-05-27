@@ -22,9 +22,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application files
 COPY . .
 
-# Copy SQL file from parent directory
-COPY ../db/responses.sql /app/db/responses.sql
-
 # Expose port
 EXPOSE 8000
 

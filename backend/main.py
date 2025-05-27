@@ -34,21 +34,11 @@ def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Try multiple possible locations for the SQL file
-    possible_paths = [
-        os.path.join(os.path.dirname(__file__), 'db', 'responses.sql'),  # Local backend/db
-        os.path.join(os.path.dirname(__file__), '..', 'db', 'responses.sql'),  # Parent db directory
-        '/app/db/responses.sql'  # Container path
-    ]
+    # SQL file is now always in backend/db
+    sql_file_path = os.path.join(os.path.dirname(__file__), 'db', 'responses.sql')
     
-    sql_file_path = None
-    for path in possible_paths:
-        if os.path.exists(path):
-            sql_file_path = path
-            break
-    
-    if not sql_file_path:
-        raise FileNotFoundError("Could not find responses.sql in any of the expected locations")
+    if not os.path.exists(sql_file_path):
+        raise FileNotFoundError(f"Could not find responses.sql at {sql_file_path}")
     
     with open(sql_file_path, 'r') as sql_file:
         sql_commands = sql_file.read()
