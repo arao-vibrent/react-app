@@ -8,8 +8,6 @@
     COPY package.json package-lock.json ./
     RUN npm ci --omit=dev
     COPY . .
-    ARG REACT_APP_API_URL=http://backend-service.surveyjs.svc.cluster.local:8000
-    ENV REACT_APP_API_URL=$REACT_APP_API_URL
     RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
     RUN test -f build/index.html || (echo "❌ React build failed! No index.html found." && exit 1)
 

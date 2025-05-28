@@ -1,0 +1,1 @@
+export const API_BASE_URL = 'http://backend-service.surveyjs.svc.cluster.local:8000'; 
