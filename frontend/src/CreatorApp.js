@@ -40,7 +40,7 @@ export default function CreatorApp() {
           const { id: newId } = await createSurvey(surveyData);
           navigate(`/creator/edit/${newId}`);
         }
-        callback(saveNo, true);
+      callback(saveNo, true);
       } catch (error) {
         console.error('Error saving survey:', error);
         callback(saveNo, false);

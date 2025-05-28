@@ -37,6 +37,9 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: IfNotPresent
+          env:
+            - name: REACT_APP_API_URL
+              value: "http://backend-service.surveyjs.svc.cluster.local:8000"
       imagePullSecrets:
         - name: artifacts-ssk8s-vibrenthealth-com-vibrent-base-read-only
 ---
