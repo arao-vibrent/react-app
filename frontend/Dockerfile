@@ -18,13 +18,17 @@ ENV NODE_ENV=production
 ENV REACT_APP_ENV=production
 ENV CI=false
 
-# Debug: Print environment variables and files
-RUN echo "NODE_ENV: $NODE_ENV"
-RUN echo "REACT_APP_ENV: $REACT_APP_ENV"
-RUN echo "Current directory contents:"
-RUN ls -la
-RUN echo "Source directory contents:"
-RUN ls -la src/
+# Debug: Print ALL environment variables
+RUN echo "=== Environment Variables ==="
+RUN env | sort
+RUN echo "=== NODE_ENV value ==="
+RUN echo $NODE_ENV
+RUN echo "=== REACT_APP_ENV value ==="
+RUN echo $REACT_APP_ENV
+
+# Debug: Print config file content
+RUN echo "=== Config File Content ==="
+RUN cat src/config.js
 
 # Run build with verbose output and capture errors
 RUN NODE_OPTIONS=--openssl-legacy-provider npm run build --verbose 2>&1 | tee build.log || (cat build.log && exit 1)
@@ -40,6 +44,10 @@ RUN echo "=== Static Directory Structure ==="
 RUN find build/static -type f -o -type d | sort
 RUN echo "=== Static Directory Contents ==="
 RUN ls -R build/static/
+
+# Debug: Check if config was properly built
+RUN echo "=== Checking built config ==="
+RUN grep -r "API_BASE_URL" build/
 
 # --------------------------------
 # Runtime Stage (Nginx)
@@ -61,8 +69,13 @@ RUN find /usr/share/nginx/html/static -type f -o -type d | sort
 RUN echo "=== Nginx Static Directory Contents ==="
 RUN ls -R /usr/share/nginx/html/static/
 
-# Verify files are copied correctly
-RUN test -d /usr/share/nginx/html/static || (echo "❌ Static directory not found in nginx html directory." && exit 1)
+# Verify files are copied correctly with better error messages
+RUN if [ ! -d "/usr/share/nginx/html/static" ]; then \
+    echo "❌ Static directory not found in nginx html directory."; \
+    echo "Current directory structure:"; \
+    find /usr/share/nginx/html -type d; \
+    exit 1; \
+fi
 
 # Do NOT set USER nginx — causes permission issues
 # USER nginx ❌
