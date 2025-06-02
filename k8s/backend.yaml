@@ -17,7 +17,7 @@ spec:
         - name: artifacts-ssk8s-vibrenthealth-com-vibrent-base-read-only
       containers:
       - name: backend
-        image: artifacts.ssk8s.vibrenthealth.com/vibrent-base/surveyjs-backend:5
+        image: artifacts.ssk8s.vibrenthealth.com/vibrent-base/surveyjs-backend:4
         ports:
         - containerPort: 8000
         env:

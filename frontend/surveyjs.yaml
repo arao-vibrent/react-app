@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: surveyjs
-          image: artifacts.ssk8s.vibrenthealth.com/vibrent-base/surveyjs-frontend:10
+          image: artifacts.ssk8s.vibrenthealth.com/vibrent-base/surveyjs-frontend:4
           ports:
             - containerPort: 8080
           imagePullPolicy: IfNotPresent
