@@ -25,8 +25,8 @@ RUN ls -la
 RUN echo "Source directory contents:"
 RUN ls -la src/
 
-# Run build with verbose output
-RUN NODE_OPTIONS=--openssl-legacy-provider npm run build --verbose
+# Run build with verbose output and capture errors
+RUN NODE_OPTIONS=--openssl-legacy-provider npm run build --verbose 2>&1 | tee build.log || (cat build.log && exit 1)
 
 # Debug: Check build output
 RUN echo "Build directory contents:"
