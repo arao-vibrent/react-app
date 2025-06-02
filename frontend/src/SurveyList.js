@@ -66,7 +66,7 @@ export default function SurveyList() {
   return (
     <div className="survey-list">
       <div className="header">
-        <h2>Surveys</h2>
+        <h2>Survey</h2>
         <div className="header-actions">
           <div className="search-container">
             <input
