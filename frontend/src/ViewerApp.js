@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { Survey } from "survey-react-ui";
 import { Model } from "survey-core";
 import "survey-core/defaultV2.min.css";
+import "./CreatorApp.css";
 import { getSurvey, saveSurveyResponse } from "./api";
 
 export default function ViewerApp() {
@@ -56,5 +57,9 @@ export default function ViewerApp() {
     }
   };
 
-  return <Survey model={model} onComplete={handleComplete} />;
+  return <div className="viewer-scope">
+          <div className="creator-scope">
+            <Survey model={model} onComplete={handleComplete} />
+          </div>
+      </div>;
 }

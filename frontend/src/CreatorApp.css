@@ -56,3 +56,227 @@
 .sd-creator__content {
   height: 100%;
 } 
+
+.viewer-root {
+  display: flex;
+  justify-content: center;
+  background-color: #a5d1e5;
+}
+
+.viewer-scope {
+  display: flex;
+  justify-content: center;
+  background-color: #a5d1e5;
+  padding: 2em;
+  height: calc(100vh - 100px);
+}
+
+.editor-scope {
+  display: flex;
+  justify-content: center;
+  /* background-color: #a5d1e5; */
+  /* padding: 2em; */
+  height: 100%;
+}
+/* palette via CSS variables used by SurveyJS */
+.creator-scope {
+  --sjs-primary-backcolor: #0ea5e9;
+  --sjs-primary-forecolor: #ffffff;
+  --sjs-general-backcolor: #f8fafc;
+  height: 100%;
+}
+
+/* target creator internals (svc- classes) */
+.creator-scope .sv-creator { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+.creator-scope .sv-toolbox { width: 320px; }
+.creator-scope .sv-side-bar { background: #f8fafc; }
+.creator-scope .sv-creator__toolbox-title { text-transform: uppercase; letter-spacing: .04em; }
+.creator-scope .sv-footer.sv-action-bar { 
+  padding: 0.87em 0.87em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px !important;
+  border-top: 1px solid #e1e1e1;
+ }
+.creator-scope .sv-root-modern {
+  max-height: 100%;
+  width: 850px;
+  overflow-y: auto;
+  background: #f8fafc;
+}
+.editor-scope .creator-scope .sv-root-modern {
+  height: fit-content;
+}
+
+.editor-scope .creator-scope {
+  height: 100%;
+  width: 100%;
+}
+.creator-scope .sv-body {
+  width: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 0;
+    justify-content: center;
+}
+.creator-scope .sv-string-viewer--multiline {
+  white-space: pre-wrap;
+  font-family: 'Montserrat-Medium', sans-serif;
+  font-weight: normal;
+}
+.creator-scope .sv-question__num {
+  font-family: 'Montserrat-Medium', sans-serif;
+  font-weight: normal;
+}
+.creator-scope .sv-components-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-grow: 1;
+}
+.creator-scope .sv-page {
+  scrollbar-width: thin;
+}
+.creator-scope .svc-flex-row { 
+  height: 100%; 
+}
+.creator-scope .sv-question__title--answer {
+  background: none;
+}
+.creator-scope .sv-checkbox--checked .sv-checkbox__svg{
+  border: none;
+  background-color:#0ea5e9;
+  fill: #fff;
+}
+.creator-scope .sv-radio--checked .sv-radio__svg{
+  border-color: #0ea5e9;
+  fill: #0ea5e9;
+}
+.creator-scope .sv-container-modern {
+  display: flex;
+  flex-direction: column;
+}
+
+.creator-scope .sv-container-modern__title {
+  vertical-align: middle;
+  text-align: left;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.creator-scope .sv-container-modern__title h3 {
+  color: #0ea5e9;
+  font-size: 12pt;
+  font-weight: 100;
+}
+.creator-scope .sv-btn--navigation {
+  background-color: #0ea5e9;
+  color: #ffffff;
+  border: none;
+  width: 200px;
+  border-radius: 1rem;
+  display: inline-flex;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.creator-scope .sv-question__content input[type="text"] {
+  width: 100%;          /* example fixed width */
+  padding: 8px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 40px;
+}
+
+.creator-scope .sv-question__content .sv-dropdown input[type="text"] {
+  border: none;
+  padding: 0;
+}
+
+.creator-scope .sv-question__content textarea {
+  border: 1px solid #6c757d;
+}
+
+/* .creator-scope .sv-question__content {
+  margin-left: 0.55em;
+  display: flex;
+} */
+
+.creator-scope .sv-question__content textarea:focus {
+  border-color: #0ea5e9;       /* blue border */
+  box-shadow: 0 0 6px rgba(159, 202, 238, 0.6); /* glow effect */
+  outline: none;               /* remove default outline */
+  background-color: #f9fcff;
+}
+
+.creator-scope .sv-question__content input[type="text"]:focus {
+  border-color: #0ea5e9;       /* blue border */
+  box-shadow: 0 0 6px rgba(159, 202, 238, 0.6); /* glow effect */
+  outline: none;               /* remove default outline */
+  background-color: #f9fcff;   /* subtle bg change */
+}
+
+.creator-scope .sv-list__item-body:hover {
+  background-color: #0ea5e9;
+  color: white;
+  font-weight: 600;
+}
+
+.creator-scope .sv-list__item-body:focus {
+  background-color: #0ea5e9;
+  color: white;
+  font-weight: 600;
+}
+
+.creator-scope .sv-list__item--selected .sv-list__item-body {
+  background-color: #0ea5e9 !important;
+  color: white;
+  font-weight: 600;
+}
+
+.creator-scope .sv-dropdown {
+  padding-inline-start: 0%;
+  box-sizing: content-box;
+  border: 1px solid #6c757d;
+  width: auto;
+}
+
+.creator-scope .sv-dropdown .sv-dropdown__value {
+  width: auto;
+} 
+
+.creator-scope .sv-completedpage {
+  margin: 0 !important;
+  background-color: #e1e1e1;
+}
+
+.creator-scope .svc-plugin-tab__content .sv-completedpage {
+  background-color: #e1e1e1 !important;
+}
+
+.creator-scope .sv-file__decorator {
+  background-color: #f9fcff;
+}
+
+.creator-scope .sv-file__decorator {
+  background-color: #f9fcff;
+}
+
+.creator-scope .sv-file__choose-btn {
+  background-color: #f7cb6d !important;
+  color: rgb(26, 2, 114);
+  border-radius: 4px;
+}
+
+.creator-scope .sv-file__no-file-chosen {
+  display: none;
+}

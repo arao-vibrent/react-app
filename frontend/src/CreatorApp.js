@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { SurveyCreatorComponent, SurveyCreator } from "survey-creator-react";
-import "survey-core/defaultV2.min.css";
 import "survey-creator-core/survey-creator-core.min.css";
 import { getSurvey, createSurvey, updateSurvey } from "./api";
 import "./CreatorApp.css";
@@ -62,7 +61,12 @@ export default function CreatorApp() {
           ← Back to Surveys
         </button>
       </div>
-      <SurveyCreatorComponent creator={creatorRef.current} />
+        <div className="editor-scope">
+          <div className="creator-scope">
+              <SurveyCreatorComponent creator={creatorRef.current} />
+            </div>
+        </div>
+      
     </div>
   );
 }
