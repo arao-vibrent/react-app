@@ -92,16 +92,18 @@
 .creator-scope .sv-side-bar { background: #f8fafc; }
 .creator-scope .sv-creator__toolbox-title { text-transform: uppercase; letter-spacing: .04em; }
 .creator-scope .sv-footer.sv-action-bar { 
-  padding: 0.87em 0.87em;
-  position: relative;
+  padding-top: 3.87em ;
+  margin-top: auto;
+  position: static;
   display: flex;
   justify-content: center;
-  margin-top: 30px !important;
   border-top: 1px solid #e1e1e1;
  }
 .creator-scope .sv-root-modern {
-  max-height: 100%;
+  display: flex;
+  flex-direction: column;
   width: 850px;
+  height: calc(100vh - 100px);
   overflow-y: auto;
   background: #f8fafc;
 }
@@ -115,11 +117,11 @@
 }
 .creator-scope .sv-body {
   width: 100%;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    padding: 0;
-    justify-content: center;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 0;
+  justify-content: flex-start;
 }
 .creator-scope .sv-string-viewer--multiline {
   white-space: pre-wrap;
@@ -279,4 +281,23 @@
 
 .creator-scope .sv-file__no-file-chosen {
   display: none;
+}
+
+.sv-matrix__cell {
+  min-width: 5em !important;
+}
+
+.sv-table td:first-child {
+  padding: 0% !important;
+}
+
+.sv-question__required-text {
+  line-height: .8em;
+  color: #c12000;
+  font-family: fantasy;
+  font-size: 1.1em !important;
+}
+
+.svd-simulator-content {
+  box-shadow: none !important;
 }
